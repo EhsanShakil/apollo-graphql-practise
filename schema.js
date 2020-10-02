@@ -13,7 +13,7 @@ const typeDefs = gql`
     name: String
     age: Int
   }
-  type mutation {
+  type Mutation {
     addUser(input: UserInput): Users
   }
 `;
