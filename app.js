@@ -1,12 +1,26 @@
 const { ApolloServer } = require("apollo-server");
 const typeDefs = require("./schema");
 
+let data = [
+  {
+    name: "John",
+    age: 20,
+  },
+];
+
 const resolvers = {
   Query: {
-    user: () => {
+    user: () => data,
+  },
+  Mutation: {
+    addUser: (e, { input }) => {
+      data.push({
+        name: input.name,
+        age: input.age,
+      });
       return {
-        name: "John",
-        age: 20,
+        name: input.name,
+        age: input.age,
       };
     },
   },
